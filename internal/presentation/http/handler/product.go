@@ -44,10 +44,7 @@ func (h *ProductHandler) Detail(c *gin.Context) {
 		writeError(c, err)
 		return
 	}
-	c.JSON(http.StatusOK, dto.Response{
-		Message: "success", 
-		Data: product,
-	})
+	c.JSON(http.StatusOK, dto.Response{Message: "success", Data: product})
 }
 
 // Create POST /api/products

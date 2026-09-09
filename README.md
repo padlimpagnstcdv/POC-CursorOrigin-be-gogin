@@ -4,7 +4,7 @@ REST API CRUD sederhana dengan **Go + Gin**, disusun memakai arsitektur berlapis
 **Presentation – Core – Data**. Penyimpanan datanya in-memory (data dummy), jadi
 proyek ini bisa langsung dijalankan tanpa perlu database.
 
-## Daftar Isi / testing cace conglict lainnya
+## Daftar Isi
 
 - [Teknologi](#teknologi)
 - [Arsitektur](#arsitektur)
