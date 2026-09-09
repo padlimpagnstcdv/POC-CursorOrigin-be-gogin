@@ -1,15 +1,23 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"log"
+
+	"be-gin-go/internal/core/service"
+	"be-gin-go/internal/data/repository"
+	"be-gin-go/internal/presentation/http/handler"
+	"be-gin-go/internal/presentation/http/router"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	// Wiring dependency: data -> core -> presentation
+	productRepo := repository.NewProductMemoryRepository()
+	productService := service.NewProductService(productRepo)
+	productHandler := handler.NewProductHandler(productService)
+
+	r := router.New(productHandler)
+
+	if err := r.Run(":8080"); err != nil {
+		log.Fatalf("failed to start server: %v", err)
+	}
 }
