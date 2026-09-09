@@ -19,11 +19,3 @@ type ProductService interface {
 	Update(id int64, name string, price float64, stock int) (domain.Product, error)
 	Delete(id int64) error
 }
-
-type ProductServiceSecond interface {
-	List() ([]domain.Product, error)
-	GetByID(id int64) (domain.Product, error)
-	Create(name string, price float64, stock int) (domain.Product, error)
-	Update(id int64, name string, price float64, stock int) (domain.Product, error)
-	Delete(id int64) error
-}
